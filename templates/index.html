@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carbon Emission Tracker</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #32a852 50%, #f0f0f0 50%);
+        }
+        header {
+            background-color: #32a852;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .menu {
+            position: relative;
+            display: inline-block;
+        }
+        .menu-button {
+            background-color: #32a852;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 10px;
+        }
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .menu-content a {
+            color: black;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .menu-content a:hover {
+            background-color: #ddd;
+        }
+        .menu:hover .menu-content {
+            display: block;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form input, form button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+        }
+        h2, p {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Carbon Emission Tracker</h1>
+        <div class="menu">
+            <button class="menu-button">☰</button>
+            <div class="menu-content">
+                <a href="/">Home</a>
+                <a href="/calculator">Kalkulator Karbon</a>
+                <a href="/about">About Us</a>
+            </div>
+        </div>
+    </header>
+    <h1>Search Carbon Emissions</h1>
+    <form method="POST" action="/search">
+        <label for="country">Enter Country Name:</label>
+        <input type="text" id="country" name="country" required>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    {% if result %}
+        <h2>Jumlah Emisi Negara {{ country }}, 5 Tahun Terakhir</h2>
+        <ul>
+            {% for row in result %}
+                <li>Tahun: {{ row['Year'] }}, Total Emisi: {{ row['Annual CO₂ emissions'] }} Ton/CO2</li>
+            {% endfor %}
+        </ul>
+    {% elif result is not none %}
+        <p>{{ result }}</p>
+    {% else %}
+        <p>No search results yet. Please enter a country name above.</p>
+    {% endif %}
+</body>
+</html>
