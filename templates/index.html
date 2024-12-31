@@ -19,13 +19,18 @@
         </div>
     </header>
     <main>
+        <div>
         <h2>Cari Emisi Karbon</h2>
+        <br>
         <form method="POST" action="/search">
+            <div>
             <label for="country">Masukkan Nama Negara:</label>
+            <br>
             <input type="text" id="country" name="country" required maxlength="100" placeholder="Contoh: Indonesia">
             <button type="submit">Search</button>
+            </div>
         </form>
-        <br>
+        </div>
         {% if result %}
             <h2>Jumlah Emisi Negara {{ country }} untuk 5 Tahun Terakhir</h2>
             <table>
@@ -45,8 +50,7 @@
                 </tbody>
             </table>
             <br>
-            <a href="/plot/{{ country }}" style="text-decoration: none; color: blue;">Lihat Grafik Emisi untuk {{ country }}</a>
-
+            <a href="/plot/{{ country }}" style="text-decoration: none; color: blue;">Lihat Grafik Emisi untuk Negara {{ country }}</a>
         {% elif result is not none %}
             <p>{{ result }}</p>
         {% else %}
