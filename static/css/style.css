@@ -1,24 +1,21 @@
-html{
-    background-color: antiquewhite;
+html {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
 }
 
-main {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto;
-    box-shadow: 0px 4px 10px rgb(47, 48, 48);
-    background-color: #ffffff;
-    border-radius: 10px;
+body {
+    margin: 0;
+    padding: 0;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #09ef24f6;
+    padding: 20px;
+    background-color: #28a745;
     color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
@@ -26,20 +23,15 @@ header h1 {
     font-size: 24px;
 }
 
-header h2 {
-    align-items: center;
-}
-
 .menu {
     position: relative;
-    display: inline-block;
 }
 
 .menu-button {
     background: none;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -50,6 +42,7 @@ header h2 {
     background-color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    border-radius: 5px;
 }
 
 .menu-content a {
@@ -66,48 +59,83 @@ header h2 {
 .menu:hover .menu-content {
     display: block;
 }
-form {
-    margin: 20px 0;
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-form label {
-    font-size: 16px;
-    margin-right: 10px;
+aside {
+    flex: 1 1 100%;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 form input[type="text"] {
-    padding: 8px;
-    width: 200px;
+    padding: 10px;
+    width: 250px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 form button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #007BFF;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 form button:hover {
     background-color: #0056b3;
 }
-table {
-    border-collapse: collapse; /* Menghilangkan jarak antar border */
-    width: 40%; /* Menjadikan tabel penuh */
-}
 
-table, th, td {
-    border: 1px solid black; /* Mengatur border */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 th, td {
-    padding: 8px; /* Memberikan jarak di dalam sel */
-    text-align: center; /* Mengatur teks menjadi rata tengah */
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
 }
 
 th {
-    background-color: #f2f2f2; /* Memberikan warna latar untuk header */
+    background-color: #f8f9fa;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    form input[type="text"] {
+        width: 100%;
+    }
 }

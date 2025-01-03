@@ -19,7 +19,7 @@
         </div>
     </header>
     <main>
-        <div>
+       <aside>
         <h2>Cari Emisi Karbon</h2>
         <br>
         <form method="POST" action="/search">
@@ -30,7 +30,7 @@
             <button type="submit">Search</button>
             </div>
         </form>
-        </div>
+        
         {% if result %}
             <h2>Jumlah Emisi Negara {{ country }} untuk 5 Tahun Terakhir</h2>
             <table>
@@ -51,6 +51,12 @@
             </table>
             <br>
             <a href="/plot/{{ country }}" style="text-decoration: none; color: blue;">Lihat Grafik Emisi untuk Negara {{ country }}</a>
+        </aside>
+        <aside>
+            <artikel>
+                Emisi karbon merujuk pada pelepasan gas karbon ke atmosfer, yang sebagian besar terdiri dari karbon dioksida (CO₂) dan metana (CH₄). Gas-gas ini merupakan bagian dari gas rumah kaca yang memerangkap panas di atmosfer dan menyebabkan perubahan iklim. Meskipun karbon dioksida secara alami dilepaskan melalui respirasi dan siklus karbon alami, aktivitas manusia telah meningkatkan konsentrasinya secara signifikan sejak era Revolusi Industri.
+            </artikel>
+        </aside>
         {% elif result is not none %}
             <p>{{ result }}</p>
         {% else %}
