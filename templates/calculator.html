@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
     <title>Kalkulator Karbon</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/calculator.css">
 </head>
 <body>
     <header>
@@ -16,9 +26,218 @@
             </div>
         </div>
     </header>
-    <main>
-        <h2>Kalkulator Karbon</h2>
-        <p>Isi halaman ini sesuai kebutuhan Anda.</p>
-    </main>
+<main>
+    <div class="container" id="form-container">
+        <div class="title">
+          <!--<img src="static/icon.svg" alt="">-->
+          <p>CO<sub>2</sub> Kalkulator</p>
+        </div>
+  
+        <div class="form-div">
+          <div class="custom-select">
+            <label for="select-state">Silahkan pilih negara anda:</label>
+            <select name="state" id="select-state"></select>
+            <span class="custom-arrow"></span>
+          </div>
+  
+          <br>
+  
+          <div class="members">
+            <i class="fas fa-home"></i>
+            <input
+              type="number"
+              placeholder="Jumlah Anggota Keluarga"
+              id="members-input"
+              name="members-input"
+            />
+          </div>
+  
+          <div class="electricity">
+            <i class="fas fa-bolt"></i>
+            <input
+              type="number"
+              placeholder="Listrik"
+              id="electricity-input"
+              name="electricity-input"
+            />
+            <label for="electricity-input"> kWh/Bulan </label>
+          </div>
+          <div class="fuel">
+            <div class="distance">
+              <i class="fas fa-car"></i>
+              <input
+                type="number"
+                placeholder="Jarak Berkendara Rata-rata"
+                id="distance-input"
+                name="distance-input"
+              />
+              <label for="distance-input"> KM/Hari </label>
+            </div>
+  
+            <div class="mileage">
+              <i class="fas fa-oil-can"></i>
+              <input
+                type="number"
+                placeholder="Mileage Kendaraan Pribadi"
+                id="mileage-input"
+                name="mileage-input"
+              />
+              <label for="mileage-input"> KMPL </label>
+            </div>
+          </div>
+  
+          <div class="lpg">
+            <i class="fas fa-fire"></i>
+            <input
+              type="number"
+              placeholder="Tabung Gas yang Digunakan"
+              id="lpg-input"
+              name="lpg-input"
+            />
+            <label for="lpg-input"> /Tahun </label>
+          </div>
+  
+          <div class="waste">
+            <i class="fas fa-dumpster"></i>
+            <input
+              type="number"
+              placeholder="Sampah yang Dibuang"
+              id="waste-input"
+              name="waste-input"
+            />
+            <label for="waste-input"> KG/Minggu</label>
+          </div>
+  
+          <button class="submit-btn" onclick="onSubmition()">Submit</button>
+        </div>
+  
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- output -->
+      <div class="container" id="result-container">
+        <div class="title">
+          Total Emisi CO<sub>2</sub> adalah: <span id="result-output"></span> Ton/Tahun
+        </div>
+           <br>
+        <div class="subtitle" id="success">Great Job! Jejak Emisi CO<sub>2</sub> milikmu masih dibawah batas. Teruslah melestarikan Bumi</div>
+          <br>
+        <div class="subtitle" id="danger">Jejak Emisi CO<sub>2</sub> milikmu berada diambang batas. Ikuti langkah-langkah ini untuk menguranginya:  </div>
+  
+        <div id="electricity-output" >
+          <p>
+            Emisi CO<sub>2</sub> dari listrik milikmu: 
+            <span id="electricity-result"></span> KWh/tahun. Untuk mengurangi konsumsi listrik, lakukan langkah-langkah berikut:
+          </p>
+          <ol>
+            <li>Pilih lampu yang tepat.</li>
+            <p class="text">
+                Lampu LED adalah pilihan pencahayaan yang paling efisien dalam penggunaan energi. Lampu 
+                LED mengonsumsi 75% lebih sedikit listrik dibandingkan lampu pijar. Lampu LED juga tidak 
+                mengandung merkuri, dan bertahan sekitar 25 kali lebih lama daripada lampu pijar tradisional.
+            </p>
+            <li>Jangan biarkan alat-alat listrik yang tidak digunakan terus menyala.</li>
+            <p class="text">
+                Alat-alat lsitrik seperti TV dan microwave akan tetap mengkonsumsi listrik walau 
+                sudah dimatikan. Casan HP juga akan tetap mengkonsumsi sedikit energi listrik
+                walau tidak dipakai (Sebaiknya cabut setelah digunakan).
+            </p>
+            <li>Matikan lampu jika tidak digunakan/sedang berada di luar.</li>
+            <p class="text">
+                Dengan mematikan lampu saat tidak digunakan, kita mengurangi konsumsi energi listrik, yang 
+                pada gilirannya mengurangi jumlah energi yang dihasilkan dari pembakaran bahan bakar fosil, 
+                sehingga menurunkan emisi CO2 yang dilepaskan ke atmosfer. Jadi, meskipun terlihat sederhana, 
+                tindakan ini dapat memberikan dampak positif dalam mengurangi jejak karbon individu dan 
+                membantu dalam upaya global untuk mengurangi emisi karbon.
+            </p>
+          </ol>
+        </div>
+  
+  
+        <div id="fuel-output" >
+          <p>Emisi CO<sub>2</sub> dari bahan bakar milikmu: <span id="fuel-result"></span> KG/Tahun. Untuk mengurangi penggunaan bahan bakar, lakukan langkah-langkah berikut:</p>
+          <p></p>
+          <ol>
+            <li>Menggunakan kendaraan pribadi hanya saat sangat dibutuhkan.</li>
+            <p class="text">
+                Kendaraan pribadi yang menggunakan bahan bakar fosil menghasilkan emisi karbon dioksida (CO₂) 
+                selama proses pembakaran. Dengan hanya berkendara saat diperlukan, konsumsi bahan bakar berkurang, 
+                sehingga menekan jumlah emisi karbon yang dilepaskan ke atmosfer.
+            </p>
+            <li>Gunakan transportasi umum.</li>
+            <p class="text">
+                Transportasi umum, seperti bus atau kereta, mampu mengangkut lebih banyak orang dalam satu perjalanan 
+                dibandingkan kendaraan pribadi. Hal ini berarti emisi karbon per penumpang jauh lebih rendah, sehingga 
+                lebih efisien secara energi.
+            </p>
+            <li>Menghindari Penggunaan AC Berlebihan</li>
+            <p class="text">
+                Penggunaan AC yang berlebihan meningkatkan beban kerja mesin kendaraan, sehingga lebih banyak bahan 
+                bakar yang digunakan dan lebih banyak karbon yang dihasilkan.
+            </p>
+          </ol>
+        </div>
+        <div id="lpg-output" >
+          <p>Emisi CO<sub>2</sub> dari gas milikmu: <span id="lpg-result"></span> KG/Tahun. Untuk mengurangi konsumsi gas, lakukan langkah-langkah berikut:</p>
+          <ol>
+            <li>Memasak dengan Metode yang Lebih Cepat</li>
+            <p class="text">
+                Menggunakan teknik memasak yang lebih cepat, seperti menutup panci atau wajan untuk mempercepat 
+                pemasakan, akan mengurangi waktu pembakaran gas.
+            </p>
+            <li>Hindari Memasak Terlalu Lama (Overcooking)</li>
+            <p class="text">
+              Memasak terlalu lama tidak hanya membuang-buang gas, tetapi juga akan mengurangi gizi dari 
+              makanan yang dimasak tersebut. Jadi sebisa hindari memasak yang terlalu lama (Overcooking)
+            </p>
+            <li>Jaga Kualitas dan Keamanan Peralatan</li>
+            <p class="text">
+                Pastikan kompor dan peralatan lainnya dalam kondisi baik untuk mencegah pemborosan gas.
+                Membersihkan kompor secara rutin juga dapat meningkatkan efisiensi pembakaran.
+            </p>
+          </ol>
+        </div>
+  
+        <div id="waste-output">
+          <p>Emisi CO<sub>2</sub> dari sampah milikmu: <span id="waste-result"></span> kilograms per tahun. Untuk mengurangi pengeluaran sampah, lakukan langkah-langkah berikut:</p>
+          <ol>
+            <li>Menerapkan 3R </li>
+            <p class="text">
+                Reduce (Mengurangi), Reuse (Menggunakan kembali), Recycle (Daur ulang) – ketiga kata 'R' ini merupakan bagian penting dari kehidupan berkelanjutan, karena membantu mengurangi jumlah sampah yang harus kita buang.
+    
+                It's Really simple!
+                <ul >
+                <li class="text">Reduce: Kurangi sampah yang dihasilka .</li>
+                <li class="text">Reuse: Gunakan kembali barang-barang yang masih layak pakai.</li>
+                <li class="text">Recycle: Daur ulang sampah agar dapat digunakan kembali.</li>
+                </ul>
+                
+               <span style="font-size: .9rem;">Menggunakan 3R (Reduce, Reuse, Recycle) juga membantu mengurangi emisi karbon dari sampah dengan cara meminimalkan jumlah limbah yang dikirim ke tempat pembuangan akhir.</span>
+            </p>
+            <li>Kurangi penggunaan kantong plastik</li>
+            <p class="text">Produksi plastik berasal dari bahan bakar fosil seperti minyak bumi dan gas alam. Proses ekstraksi, pengolahan, dan manufaktur plastik menghasilkan emisi karbon yang signifikan. Dengan mengurangi permintaan kantong plastik, produksi plastik juga berkurang, sehingga emisi karbon yang dihasilkan dari proses tersebut dapat ditekan.
+            </p>
+            <li>Mengompos Sampah Organik</li>
+            <p class="text">
+                Sampah organik yang dibuang ke TPA akan terurai secara anaerob dan menghasilkan metana, gas rumah kaca yang sangat kuat. Mengubah limbah organik menjadi kompos adalah cara yang ramah lingkungan untuk mengelola limbah ini.
+            </p>
+          </ol>
+        </div>
+      </div>
+  
+      </div>
+  </main>
+      <script src="/static/js/app.js"></script>
+
 </body>
 </html>
