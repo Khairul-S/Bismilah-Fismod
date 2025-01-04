@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 
@@ -60,9 +62,9 @@ def plot(country):
     # Create the plot
     plt.figure(figsize=(10, 6))
     plt.bar(last_5_years['Year'], last_5_years['Annual CO₂ emissions'], color='green')
-    plt.xlabel('Year')
-    plt.ylabel('Annual CO₂ Emissions (Ton/CO₂)')
-    plt.title(f'Carbon Emissions for {country} (Last 5 Years)')
+    plt.xlabel('Tahun')
+    plt.ylabel('Jumlah Emisi CO₂  (Ton/CO₂)')
+    plt.title(f'Emisi Karbon Negara {country} (5 Tahun Terakhir )')
     plt.grid(axis='y')
     
     # Save the plot to the static folder
